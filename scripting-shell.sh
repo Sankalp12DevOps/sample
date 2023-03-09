@@ -19,3 +19,5 @@ echo "$* this is dollar*"
 echo "$@ this is @"
 echo "$# this is #"
 echo "$$ this is $"
+read -p "ENTER THE NAME OF THE USER:" NAME
+echo NAME
