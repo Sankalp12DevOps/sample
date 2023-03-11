@@ -7,6 +7,7 @@ cd /home/robouser
 
 function exitcode(){
 if [ $1 -ne 0 ]; then
+echo "failure"
 exit 1
 else
 exit 0
