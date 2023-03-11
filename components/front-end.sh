@@ -1,9 +1,6 @@
 echo "this is front-end"
 TEMP_PATH=/tmp/
 
-useradd robouser
-cd 
-cd /home/robouser
 
 function exitcode(){
 if [ $1 -ne 0 ]; then
