@@ -4,34 +4,35 @@ TEMP_PATH=/tmp/
 
 function exitcode(){
 if [ $1 -ne 0 ]; then
-echo "failure"
+echo -e "$2:" "\e[31m FAILURE\e[0m"
 exit 1
 else
+echo -e "$2:" "\e[32m SUCCESS\e[0m"
 exit 0
 fi
 }
 
-yum install nginx -y
-echo -e "nginx installation:" "\e[32m SUCCESS\e[0m"
-exitcode $?
 rm -rf $TEMP_PATH
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
-exitcode $?
-cd /usr/share/nginx/html
-exitcode $?
+yum install nginx -y &>>temp.log
+echo -e "nginx installation:" "\e[32m SUCCESS\e[0m"
+exitcode $? "Nginx Installation"
+curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip" &>>temp.log
+exitcode $? "Download fron-end app"
+cd /usr/share/nginx/html 
+exitcode $? "Navigated to nginx/html"
 rm -rf *
-exitcode $?
-unzip /tmp/frontend.zip
-exitcode $?
+exitcode $? "deleted all files within nginx/html"
+unzip /tmp/frontend.zip &>>temp.log
+exitcode $? "Unzipped front-end zip file"
 mv frontend-main/* .
-exitcode $?
+exitcode $? "Moved all content within Frontend-main to root"
 mv static/* .
-exitcode $?
+exitcode $? "Moved all content within static folder to root"
 rm -rf frontend-main README.md
-exitcode $?
+exitcode $? "remove frontend-main nginx file"
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
-exitcode $?
-systemctl enable nginx
-exitcode $?
-systemctl start nginx
-exitcode $?
+exitcode $? "Moved frontend local host onfig to default folder of nginx"
+systemctl enable nginx &>>temp.log
+exitcode $? "Enable Nginx"
+systemctl start nginx &>>temp.log
+exitcode $? "start Nginx
