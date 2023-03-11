@@ -21,3 +21,12 @@ echo "$# this is #"
 echo "$$ this is $"
 read -p "ENTER THE NAME OF THE USER:" NAME
 echo $NAME
+<< COMMENT
+hello how are you
+COMMENT
+
+if[2gt3];  then
+echo inside if
+fi
+
+
