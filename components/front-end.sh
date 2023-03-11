@@ -14,10 +14,9 @@ fi
 
 rm -rf $TEMP_PATH
 yum install nginx -y &>>temp.log
-echo -e "nginx installation:" "\e[32m SUCCESS\e[0m"
 exitcode $? "Nginx Installation"
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip" &>>temp.log
-exitcode $? "Download fron-end app"
+exitcode $? "Download front-end app"
 cd /usr/share/nginx/html 
 exitcode $? "Navigated to nginx/html"
 rm -rf *
