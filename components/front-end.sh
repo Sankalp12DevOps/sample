@@ -19,11 +19,8 @@ curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend
 cd /usr/share/nginx/html 
 rm -rf *
 unzip /tmp/frontend.zip &>> $LOG_FILE
-exitcode $? "Unzipped front-end zip file"
 mv frontend-main/* .
-exitcode $? "Moved all content within Frontend-main to root"
 mv static/* .
-exitcode $? "Moved all content within static folder to root"
 rm -rf frontend-main README.md
 exitcode $? "remove frontend-main nginx file"
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
