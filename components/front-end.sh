@@ -12,17 +12,25 @@ else
 fi
 }
 
-rm -rf $TEMP_PATH
+rm -rf $TEMP_PATH &>> $LOG_FILE
+exitcode $? "Remove all content inside /tmp/ folder"
 yum install nginx -y &>> $LOG_FILE
+exitcode $? "Install Nginx" &>> $LOG_FILE
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip" &>> $LOG_FILE
-cd /usr/share/nginx/html 
-rm -rf *
+exitcode $? "Download front-end zip content"
+cd /usr/share/nginx/html
+exitcode $? "Navigate inside /usr/share/nginx/html"
+rm -rf * &>> $LOG_FILE
+exitcode $? "Removed all content inside /usr/share/nginx/html"
 unzip /tmp/frontend.zip &>> $LOG_FILE
-mv frontend-main/* .
+exitcode $? "Unzipped frontend.zip in root folder"
+mv frontend-main/* . &>> $LOG_FILE
+exitcode $? "Moved frontend-main to default folder of nginx"
 mv static/* .
-rm -rf frontend-main README.md
+exitcode $? "Moved static contenet to root folder"
+rm -rf frontend-main README.md &>> $LOG_FILE
 exitcode $? "remove frontend-main nginx file"
-mv localhost.conf /etc/nginx/default.d/roboshop.conf
+mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
 exitcode $? "Moved frontend local host onfig to default folder of nginx"
 systemctl enable nginx &>> $LOG_FILE
 exitcode $? "Enable Nginx"
