@@ -15,13 +15,9 @@ fi
 
 rm -rf $TEMP_PATH
 yum install nginx -y &>> $LOG_FILE
-exitcode $? "Nginx Installation"
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip" &>> $LOG_FILE
-exitcode $? "Download front-end app"
 cd /usr/share/nginx/html 
-exitcode $? "Navigated to nginx/html"
 rm -rf *
-exitcode $? "deleted all files within nginx/html"
 unzip /tmp/frontend.zip &>> $LOG_FILE
 exitcode $? "Unzipped front-end zip file"
 mv frontend-main/* .
