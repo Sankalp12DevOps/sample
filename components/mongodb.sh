@@ -12,7 +12,7 @@ else
  return
 fi
 }
-
+su $USER
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo &>> $LOG_FILE
 exitcode $? "Downloading Mango Repo"
 yum install -y mongodb-org &>> $LOG_FILE
@@ -21,5 +21,8 @@ systemctl enable mongod &>> $LOG_FILE
 exitcode $? "Downloading Enable Mango Repo"
 systemctl start mongod &>> $LOG_FILE 
 exitcode $? "Started Mango Repo"
-sed -i -e 's\127.0.0.1\0.0.0.0\' /etc/mongod.conf &>> $LOG_FILE
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>> $LOG_FILE
 exitcode $? "Updated Exposed Port to 0.0.0.0"
+systemctl restart mongod &>> $LOG_FILE
+
+
