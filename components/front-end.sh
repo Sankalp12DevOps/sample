@@ -2,7 +2,6 @@ echo "this is front-end"
 TEMP_PATH=./tmp/
 LOG_FILE=/tmp/robo.log
 
-
 function exitcode(){
 if [ $1 -ne 0 ]; then
  echo -e "$2:" "\e[31m FAILURE \e[0m"
@@ -10,6 +9,7 @@ if [ $1 -ne 0 ]; then
 else
  echo -e "$2:" "\e[32m SUCCESS \e[0m"
  exit 0
+ return
 fi
 }
 
