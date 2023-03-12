@@ -1,5 +1,5 @@
 echo "this is front-end"
-TEMP_PATH=/tmp/
+TEMP_PATH=./tmp/
 
 
 function exitcode(){
@@ -13,15 +13,15 @@ fi
 }
 
 rm -rf $TEMP_PATH
-yum install nginx -y &>>temp.log
+yum install nginx -y &>> /tmp/temp.log
 exitcode $? "Nginx Installation"
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip" &>>temp.log
+curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip" &>> /tmp/temp.log
 exitcode $? "Download front-end app"
 cd /usr/share/nginx/html 
 exitcode $? "Navigated to nginx/html"
 rm -rf *
 exitcode $? "deleted all files within nginx/html"
-unzip /tmp/frontend.zip &>>temp.log
+unzip /tmp/frontend.zip &>> /tmp/temp.log
 exitcode $? "Unzipped front-end zip file"
 mv frontend-main/* .
 exitcode $? "Moved all content within Frontend-main to root"
@@ -31,7 +31,7 @@ rm -rf frontend-main README.md
 exitcode $? "remove frontend-main nginx file"
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 exitcode $? "Moved frontend local host onfig to default folder of nginx"
-systemctl enable nginx &>>temp.log
+systemctl enable nginx &>> /tmp/temp.log
 exitcode $? "Enable Nginx"
-systemctl start nginx &>>temp.log
+systemctl start nginx &>> /tmp/temp.log
 exitcode $? "start Nginx
