@@ -35,4 +35,4 @@ exitcode $? "Moved frontend local host onfig to default folder of nginx"
 systemctl enable nginx &>> $LOG_FILE
 exitcode $? "Enable Nginx"
 systemctl start nginx &>> $LOG_FILE
-exitcode $? "start Nginx
+exitcode $? "start Nginx"
