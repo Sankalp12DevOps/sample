@@ -1,6 +1,7 @@
 echo "this is front-end"
 TEMP_PATH=./tmp/
 LOG_FILE=/tmp/robo.log
+USER=roboshop
 
 function exitcode(){
 if [ $1 -ne 0 ]; then
@@ -11,6 +12,8 @@ else
  return
 fi
 }
+
+su $USER
 
 rm -rf $TEMP_PATH &>> $LOG_FILE
 exitcode $? "Remove all content inside /tmp/ folder"
@@ -36,3 +39,4 @@ systemctl enable nginx &>> $LOG_FILE
 exitcode $? "Enable Nginx"
 systemctl start nginx &>> $LOG_FILE
 exitcode $? "start Nginx"
+chown $USER
