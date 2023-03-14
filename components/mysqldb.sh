@@ -9,7 +9,9 @@ enableStartService
 TEMP_PASSWORD=$(grep "temporary password" /var/log/mysqld.log | awk -F : '{print $NF}')
 echo $TEMP_PASSWORD
 echo "show databases;" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE
+echo hello0
 if [ $? -ne 0 ]; then
+echo hello
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Roboshop@1';" | mysql --connect-expired-password -uroot -p$TEMP_PASSWORD &>> ${LOG_FILE}
 exitcode $? "Password Changed"
 fi
