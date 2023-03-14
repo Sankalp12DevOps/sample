@@ -1,6 +1,7 @@
 APP=mysqld
 COMPONENT=mysqld
 
+source components/common.sh
 
 # curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo
 # yum install mysql-community-server -y
