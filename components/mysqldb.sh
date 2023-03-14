@@ -10,7 +10,7 @@ TEMP_PASSWORD=$(grep "temporary password" /var/log/mysqld.log | awk -F : '{print
 echo $TEMP_PASSWORD
 echo "show databases;" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE
 if [ $? -ne 0 ]; then
-echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Roboshop@1';" | mysql --connect-expired-password -uroot -p${TEMP_PASSWORD} &>> ${LOG_FILE}
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Roboshop@1';" | mysql --connect-expired-password -uroot -p$TEMP_PASSWORD &>> ${LOG_FILE}
 exitcode $? "Password Changed"
 fi
 echo "show plugins;" | mysql -uroot -pRoboShop@1 | grep validate_password &>>${LOG_FILE}
