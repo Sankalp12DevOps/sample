@@ -3,10 +3,10 @@ COMPONENT=mysqld
 
 source components/common.sh
 
-curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo
+curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo &>>${LOG_FILE}
 yum install mysql-community-server -y
 enableStartService
-TEMP_PASSWORD=$(grep "temporary password" /var/log/mysqld.log | awk -F : '{print $NF}')
+TEMP_PASSWORD=$(grep "temporary password" /var/log/mysqld.log | awk -F ": " '{print $NF}')
 echo $TEMP_PASSWORD
 echo "show databases;" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE
 if [ $? -ne 0 ]; then
