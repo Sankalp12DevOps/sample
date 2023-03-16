@@ -14,7 +14,7 @@ aws ec2 run-instances \
     --instance-market-options "MarketType"="spot", \
      "SpotOptions"={ \
     "SpotInstanceType"="persistent", \
-    "InstanceInterruptionBehavior" = "stop"} \
+    "InstanceInterruptionBehavior"="stop"} \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" \
     --security-group-ids $SECURITY_GROUPID | jq
     
