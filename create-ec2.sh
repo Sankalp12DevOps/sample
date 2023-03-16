@@ -5,9 +5,9 @@ aws ec2 run-instances \
     --image-id $AMI_ID \
     --count 1 \
     --instance-type t2.micro \
-    --key-name payment \
     
-
+    
+    #--key-name payment \
     # --security-group-ids sg-07570e17ab8331f13 \
     # --subnet-id subnet-00b5ede5e160caa59 \
     # --block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"VolumeSize\":30,\"DeleteOnTermination\":false}}]" \
