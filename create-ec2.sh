@@ -11,9 +11,9 @@ aws ec2 run-instances \
     --image-id $AMI_ID \
     --count 1 \
     --instance-type t2.micro \
-    --instance-market-options "MarketType=spot, SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
     --security-group-ids $SECURITY_GROUPID \
-    --tag-specifications "ResourceType=instance, Tags=[{Key=Name,Value="$COMPONENT"}]" | jq
+    --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq
     
     
     #--key-name payment \
