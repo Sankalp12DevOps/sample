@@ -15,7 +15,7 @@ else
 fi
 }
 
-su $USER
+useradd $USER
 
 clearTempFolder
 installNginx
