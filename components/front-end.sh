@@ -3,7 +3,7 @@ TEMP_PATH=./tmp/
 LOG_FILE=/tmp/robo.log
 USER=roboshop
 COMPONENT=frontend
-source components/common
+source components/common.sh
 
 function exitcode(){
 if [ $1 -ne 0 ]; then
