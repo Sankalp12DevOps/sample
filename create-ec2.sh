@@ -17,12 +17,12 @@
 #     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]")
     
     
-'AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
+AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
 SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b53-allow-all-sg  | jq ".SecurityGroups[].GroupId" | sed -e 's/"//g')
 
 echo -n "Ami ID is $AMI_ID"
 
-echo -n "Launching the instance with $AMI_ID as AMI :"\
+echo -n "Launching the instance with $AMI_ID as AMI :"
 IPADDRESS=$(aws ec2 run-instances --image-id $AMI_ID \
                 --instance-type t3.micro \
                 --security-group-ids ${SGID} \
