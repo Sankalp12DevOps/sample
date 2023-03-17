@@ -3,6 +3,7 @@ TEMP_PATH=./tmp/
 LOG_FILE=/tmp/robo.log
 USER=roboshop
 COMPONENT=frontend
+source components/common
 
 function exitcode(){
 if [ $1 -ne 0 ]; then
@@ -30,5 +31,5 @@ exitcode $? "Moved static contenet to root folder"
 rm -rf frontend-main README.md &>> $LOG_FILE
 exitcode $? "remove frontend-main nginx file"
 mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
-exitcode $? "Moved frontend local host onfig to default folder of nginx"
+exitcode $? "Moved frontend local host config to default folder of nginx"
 enableStartService
