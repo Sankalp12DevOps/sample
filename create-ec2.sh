@@ -18,4 +18,4 @@ PRIVATEIP=$(aws ec2 run-instances \
 
 sed -e "s/COMPONENT/$COMPONENT/" -e "s/IPADDRESS/$PRIVATEIP/" components/record.json > /tmp/r53.json
 
-aws route53 change-resource-record-sets --hosted-zone-id $HOSTEDZONEID --change-batch /tmp/r53.json
+aws route53 change-resource-record-sets --hosted-zone-id $HOSTEDZONEID --change-batch file:///tmp/r53.json
