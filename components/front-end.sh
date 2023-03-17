@@ -23,7 +23,7 @@ cd /usr/share/nginx/html
 exitcode $? "Navigate inside /usr/share/nginx/html"
 rm -rf * &>> $LOG_FILE
 exitcode $? "Removed all content inside /usr/share/nginx/html"
-mv frontend-main/* . &>> $LOG_FILE
+mv frontend/* . &>> $LOG_FILE
 exitcode $? "Moved frontend-main to default folder of nginx"
 mv static/* .
 exitcode $? "Moved static contenet to root folder"
