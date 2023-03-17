@@ -1,7 +1,6 @@
 echo "this is front-end"
 TEMP_PATH=/tmp/
 LOG_FILE=/tmp/robo.log
-USER=roboshop
 COMPONENT=frontend
 source components/common.sh
 
