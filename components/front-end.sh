@@ -28,7 +28,7 @@ mv frontend-main/* . &>> $LOG_FILE
 exitcode $? "Moved frontend-main to default folder of nginx"
 mv static/* .
 exitcode $? "Moved static contenet to root folder"
-rm -rf frontend-main README.md &>> $LOG_FILE
+rm -rf frontend-main README.md
 exitcode $? "remove frontend-main nginx file"
 mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
 exitcode $? "Moved frontend local host config to default folder of nginx"
