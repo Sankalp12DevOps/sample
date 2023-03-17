@@ -30,7 +30,7 @@ curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${CO
 exitcode $? "Download front-end zip content"
 unzip /tmp/${COMPONENT}.zip &>> $LOG_FILE
 exitcode $? "Unzipped frontend.zip in root folder"
-mv ${COMPONENT}-main ${COMPONENT} &>> $LOG_FILE
+mv ${COMPONENT}-main ${COMPONENT}
 exitcode $? "Rename catalogue-main to catalogue"
 
 
