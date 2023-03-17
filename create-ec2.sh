@@ -1,4 +1,4 @@
-!/bin/bash 
+#!/bin/bash 
 if [ -z $1 ]; then
 echo -e "\e[31m PLease provide an input\e[0m"
 exit 1
