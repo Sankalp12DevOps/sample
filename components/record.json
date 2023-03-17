@@ -18,6 +18,3 @@
 
     ]
   }
-  # sed -i "s/COMPONENT/$COMPONENT" -i "s/IPADDRESS/$PRIVATEIP" components/record.json > /tmp/r53.json
-
-# aws route53 change-resource-record-sets --hosted-zone-id ${HOSTEDZONEID} --change-batch components/record.json
