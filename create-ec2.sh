@@ -16,7 +16,7 @@ PRIVATEIP=echo $(aws ec2 run-instances \
     --instance-market-options "MarketType=spot, SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}]" | jq '.Instances[].NetworkInterfaces[].PrivateIpAddress' | sed -e "s/"//g")
 
-sed -i "s/COMPONENT/$COMPONENT" -i "s/IPADDRESS/$PRIVATEIP" components/record.json > /tmp/r53.json
+# sed -i "s/COMPONENT/$COMPONENT" -i "s/IPADDRESS/$PRIVATEIP" components/record.json > /tmp/r53.json
 
-aws route53 change-resource-record-sets --hosted-zone-id ${HOSTEDZONEID} --change-batch components/record.json
+# aws route53 change-resource-record-sets --hosted-zone-id ${HOSTEDZONEID} --change-batch components/record.json
 
