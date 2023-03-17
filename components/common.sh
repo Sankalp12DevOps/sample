@@ -25,7 +25,7 @@ exitcode $? "Install Nginx" &>> $LOG_FILE
 }
 
 downloadZipPackageAndUnZip(){
-cd /home/{user}
+cd /home/{USER}
 curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip" &>> $LOG_FILE
 exitcode $? "Download front-end zip content"
 unzip /tmp/${COMPONENT}.zip &>> $LOG_FILE
