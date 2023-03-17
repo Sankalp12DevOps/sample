@@ -22,7 +22,7 @@ SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b53-all
 
 echo -n "Ami ID is $AMI_ID"
 
-echo -n "Launching the instance with $AMI_ID as AMI :"
+echo -n "Launching the instance with $AMI_ID as AMI :"\
 IPADDRESS=$(aws ec2 run-instances --image-id $AMI_ID \
                 --instance-type t3.micro \
                 --security-group-ids ${SGID} \
