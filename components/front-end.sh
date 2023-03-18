@@ -34,7 +34,7 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
 exitcode $? "Moved frontend local host config to default folder of nginx"
 enableStartService
 
-for [ i in cart catalogue user shipping payment ] do
+for i in[cart catalogue user shipping payment ] do
 
 sed -i "/$i/s/localhost/$i.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
 
