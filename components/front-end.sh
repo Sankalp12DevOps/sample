@@ -2,6 +2,7 @@ echo "this is front-end"
 TEMP_PATH=./tmp/
 LOG_FILE=/tmp/robo.log
 COMPONENT=frontend
+APP=nginx
 source components/common.sh
 
 function exitcode(){
