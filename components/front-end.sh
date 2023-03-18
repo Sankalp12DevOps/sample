@@ -36,7 +36,7 @@ enableStartService
 
 for i in [ cart catalogue user shipping payment ] do
 
-sed -i "/$i/s/localhost/$i.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
+$(sed -i "/$i/s/localhost/$i.roboshop.internal/" /etc/nginx/default.d/roboshop.conf)
 
 done
 
