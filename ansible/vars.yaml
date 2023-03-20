@@ -14,7 +14,7 @@
       msg: value of this is {{URL}}
      vars:
       URL: tatasky.net
-
+      
    - name: priting the value from command line
      ansible.builtin.debug:
        msg: value of CLI is {{CMD_URL}}
