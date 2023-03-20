@@ -10,8 +10,8 @@
       msg: value of this is {{URL}}
 
    - name: printing local variable
-     vars:
-      URL: tatasky.net
      ansible.builtin.debug:
       msg: value of this is {{URL}}
+     vars:
+      URL: tatasky.net
     
