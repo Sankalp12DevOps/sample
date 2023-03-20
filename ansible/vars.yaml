@@ -11,12 +11,6 @@
 
    - name: printing local variable
      ansible.builtin.debug:
-      msg: value of this is {{URL}}
-     vars:
-      URL: tatasky.net
-
-   - name: printing local variable
-     ansible.builtin.debug:
       msg: value of this is {{CMD_URL}}
 
     
