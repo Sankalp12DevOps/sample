@@ -42,7 +42,7 @@
     
     - name: This is for loop
       ansible.builtin.debug:
-       msg: {{item}}
+       msg: "{{item}}"
       loop:
         - 1
         - 2
