@@ -41,7 +41,7 @@
       ansible_distribution == "CentOS"
     
    - name: This is for loop
-      ansible.builtin.debug:
+     ansible.builtin.debug:
        msg: "{{item}}"
       loop:
         - 1
