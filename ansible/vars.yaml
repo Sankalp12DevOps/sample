@@ -28,7 +28,7 @@
    - name: This is CLI URL
      ansible.builtin.debug:
        msg: "{{CMD_URL}}" 
-s
+
    - name: This is file URL
      ansible.builtin.debug:
        msg: "{{SEP_URL}}"
