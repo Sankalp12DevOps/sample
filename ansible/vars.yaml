@@ -1,47 +1,34 @@
-- name: Demo on using variables  
-  hosts: all                   
-  vars_files: vars.yaml
-  vars_prompt: 
-   - name: PURL  
-     prompt: Enter the purl 
-     private: true
-  vars: 
-    URL: play.google.com                    # Global Variable; All tasks can inherit this value  
+- name: Playbook1
+  hosts: all
+  vars_files: vals.yaml
+   
+  vars:
+   URL: www.global.com
+  
+  vars_prompt:
+   - name: PURL
+     prompt: What is your URL
+     private: false
+
   tasks:
-    - name: Printing the URL Task  
+   - name: This task is to print local variable
+     vars:
+      URL: www.google.com
+     ansible.bulitin.debug:
+      msg: "{{URL}}"
+
+   - name: This is to print global value
+      ansible.bulitin.debug:
+       msg: "{{URL}}"
+
+   - name: This is prompt URL
+      ansible.builtin.debug: 
+       msg: "{{PURL}}"
+
+   - name: This is CLI URL
       ansible.builtin.debug:
-         msg: The value of url is {{URL}}  
-
-    - name: Printing the URL from the Task
+       msg: "{{C_URL}}"
+    
+   - name: This is file URL
       ansible.builtin.debug:
-        msg: The value of url is {{URL}}  
-      vars:
-        URL: task.google.com                 # Task / Local Level Variable ; The scope of is it only this task 
-
-    - name: Printing the URL
-      ansible.builtin.debug:
-        msg: "{{URL}}"
-      vars:
-        URL: task.google.com                 # Task / Local Level Variable ; The scope of is it only this task 
-
-    - name: Printing the value supplied from command line  
-      ansible.builtin.debug:
-        msg: "{{CMD_URL}}"
-
-    - name: Printing the variables from a file 
-      ansible.builtin.debug:
-        msg: "{{GAME_LIVES}}"
-
-    - name: Printing prompt url  
-      ansible.builtin.debug:
-        msg: "{{PURL}}"
-
-
-# $URL is bash is equivalent to {{URL}} in YAML 
-
-# Variable Precendence : 
-# CLI Variables  > Local Variables > Global Variables > File Variables > Prompt Variables 
-
-
-# When to specifically use Quites ? 
-# When you're printing only the variable then enclose them in the Double Quotes.
+       msg: "{{SEP_URL}}"
