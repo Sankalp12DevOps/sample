@@ -15,7 +15,7 @@
    - name: This task is to print local variable
      vars:
       URL: www.google.com
-      ansible.bulitin.debug:
+     ansible.bulitin.debug:
       msg: "{{URL}}"
 
     - name: This is to print global value
