@@ -14,11 +14,11 @@
    - name: This task is to print local variable
      vars:
       URL: www.google.com
-     ansible.bulitin.debug:
+     ansible.builtin.debug:
       msg: "{{URL}}"
-
+      
    - name: This is to print global value
-      ansible.bulitin.debug:
+      ansible.builtin.debug:
        msg: "{{URL}}"
 
    - name: This is prompt URL
@@ -27,8 +27,8 @@
 
    - name: This is CLI URL
       ansible.builtin.debug:
-       msg: "{{C_URL}}"
-    
+       msg: "{{C_URL}}" 
+
    - name: This is file URL
       ansible.builtin.debug:
        msg: "{{SEP_URL}}"
