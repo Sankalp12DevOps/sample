@@ -60,4 +60,11 @@
    - name: Print the previous output
      ansible.builtin.debug:
       msg: "{{output.msg}}"
+    
+   - name: set fact 
+     set_fact:
+      msg: "Hello World"
+   - name: display fact
+     ansible.builtin.debug:
+      msg: "{{msg}}"
   
