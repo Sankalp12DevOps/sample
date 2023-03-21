@@ -37,3 +37,7 @@
    - name: NAme of Distribution is 
      ansible.builtin.debug:
        msg: "{{ansible_distribution}}"
+     when:
+      ansible_distribution == "CentOS"
+
+  
