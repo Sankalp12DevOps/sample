@@ -1,7 +1,7 @@
 - name: This is play1
   hosts: all
 
-  vars_files:: vals.yaml
+  vars_files: vals.yaml
   vars_prompt:
    - name: PURL
      prompt: enter the URL
