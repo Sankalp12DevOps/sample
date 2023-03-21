@@ -33,3 +33,7 @@
    - name: This is file URL
      ansible.builtin.debug:
        msg: "{{SEP_URL}}"
+
+   - name: NAme of Distribution is 
+     ansible.builtin.debug:
+       msg: "{{ansible_distribution}}"
