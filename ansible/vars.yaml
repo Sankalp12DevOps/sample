@@ -81,10 +81,10 @@
       name: Nginx
       state: present
 
-    - name: Add a file on the server
-      ansible.debug.shell: cat hello.txt
+   - name: Add a file on the server
+     ansible.debug.shell: cat hello.txt
   
-    - name: copy a file
-      ansible.debug.copy: 
+   - name: copy a file
+     ansible.debug.copy: 
        src: hello.txt
        dest: folder/
