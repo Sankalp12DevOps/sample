@@ -20,15 +20,19 @@
    - name: This is to print global value
      ansible.builtin.debug:
        msg: "{{URL}}"
+     tags: front-end
 
    - name: This is prompt URL
      ansible.builtin.debug: 
        msg: "{{PURL}}"
+     tags: back-end
+     
 
    - name: This is CLI URL
      ansible.builtin.debug:
        msg: "{{CMsD_URL}}" 
      ignore_errors: yes
+     tags: front-end
 
    - name: This is file URL
      ansible.builtin.debug:
@@ -39,6 +43,8 @@
        msg: "{{ansible_distribution}}"
      when:
       ansible_distribution == "CentOS"
+     tags: back-end
+     
     
    - name: This is for loop
      ansible.builtin.debug:
@@ -68,5 +74,4 @@
    - name: display fact
      ansible.builtin.debug:
       msg: "{{msg}}"
-      msg1: "{{nonmg}}"
   
