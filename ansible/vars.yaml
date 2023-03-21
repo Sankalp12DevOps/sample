@@ -1,8 +1,6 @@
 - name: Playbook1
   hosts: all
-
   vars_files: vals.yaml
-   
   vars:
    URL: www.global.com
   
@@ -15,11 +13,11 @@
    - name: This task is to print local variable
      vars:
       URL: www.google.com
-     ansible.bulitin.debug:
+     ansible.builtin.debug:
       msg: "{{URL}}"
 
     - name: This is to print global value
-      ansible.bulitin.debug:
+      ansible.builtin.debug:
        msg: "{{URL}}"
 
     - name: This is prompt URL
@@ -32,4 +30,4 @@
     
     - name: This is file URL
       ansible.builtin.debug:
-       msg: {{SEP_URL}}
+       msg: "{{SEP_URL}}"
