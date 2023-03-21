@@ -1,5 +1,10 @@
 - name: This is play1
   hosts: all
+
+  vars_prompt:
+   - name: PURL
+     prompt: enter the URL
+     private: false
   
   vars:
     URL: play.google.com
@@ -9,6 +14,17 @@
      ansible.builtin.debug:
       msg: value of this is {{URL}}
 
-   - name: printing local variable
+   - name: printing CMD LINE variable
      ansible.builtin.debug:
       msg: value of this is {{CMD_URL}}
+    
+   - name: enter the local variable value
+     vars:
+      URL: Helloworld.org.com
+     ansible.builtin.debug:
+      msg: "{{URL}}" 
+  
+  tasks:
+   - name: printing the value from aonther file
+     ansible.builtin.debug:
+      msg: The value from another file is {{SEP_URL}}
