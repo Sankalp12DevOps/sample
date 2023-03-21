@@ -40,7 +40,7 @@
      when:
       ansible_distribution == "CentOS"
     
-    - name: This is for loop
+   - name: This is for loop
       ansible.builtin.debug:
        msg: "{{item}}"
       loop:
