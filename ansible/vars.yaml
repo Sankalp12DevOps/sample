@@ -1,6 +1,6 @@
 - name: Demo on using variables  
   hosts: all                   
-  vars_files: demo-vars.yaml
+  vars_files: vars.yaml
   vars_prompt: 
    - name: PURL  
      prompt: Enter the purl 
