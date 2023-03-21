@@ -1,30 +1,35 @@
-- name: This is play1
+- name: Playbook1
   hosts: all
 
   vars_files: vals.yaml
+   
+  vars:
+   URL: www.global.com
+  
   vars_prompt:
    - name: PURL
-     prompt: enter the URL
+     prompt: What is your URL
      private: false
-  
-  vars:
-    URL: play.google.com
-  
+
   tasks:
-   - name: printing url task
-     ansible.builtin.debug:
-      msg: value of this is {{URL}}
-
-   - name: printing CMD LINE variable
-     ansible.builtin.debug:
-      msg: value of this is {{CMD_URL}}
-    
-   - name: enter the local variable value
+   - name: This task is to print local variable
      vars:
-      URL: Helloworld.org.com
-     ansible.builtin.debug:
-      msg: "{{URL}}" 
+      URL: www.google.com
+      ansible.bulitin.debug:
+      msg: "{{URL}}"
 
-   - name: printing the value from aonther file
-     ansible.builtin.debug:
-      msg: The value from another file is {{SEP_URL}}
+    - name: This is to print global value
+      ansible.bulitin.debug:
+       msg: "{{URL}}"
+
+    - name: This is prompt URL
+      ansible.builtin.debug: 
+       msg: "{{PURL}}"
+
+    - name: This is CLI URL
+      ansible.builtin.debug:
+       msg: {{C_URL}}
+    
+    - name: This is file URL
+      ansible.builtin.debug:
+       msg: {{SEP_URL}}
