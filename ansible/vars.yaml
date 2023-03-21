@@ -49,4 +49,13 @@
         - 3
         - Hello
 
+   - name: Execute shell and register
+     ansible.builtin.shell: uptime
+     register: output
+
+   - name: Print the previous output
+     ansible.builtin.debug:
+      msg: {{output.stdout}}
+     
+
   
