@@ -71,7 +71,20 @@
      set_fact:
       msg: "Hello World"
       nonmg: "niyavva"
+
    - name: display fact
      ansible.builtin.debug:
       msg: "{{msg}}"
+
+   - name: Install Nginx on the server
+     ansible.builtin.package:
+      name: Nginx
+      state: present
+
+    - name: Add a file on the server
+      ansible.debug.shell: cat hello.txt
   
+    - name: copy a file
+      ansible.debug.copy: 
+       src: hello.txt
+       dest: folder/
