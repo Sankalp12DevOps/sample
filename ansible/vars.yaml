@@ -68,5 +68,5 @@
    - name: display fact
      ansible.builtin.debug:
       msg: "{{msg}}"
-      msg: "{{nonmg}}"
+      msg1: "{{nonmg}}"
   
