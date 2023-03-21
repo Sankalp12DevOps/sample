@@ -27,7 +27,8 @@
 
    - name: This is CLI URL
      ansible.builtin.debug:
-       msg: "{{CMD_URL}}" 
+       msg: "{{CMsD_URL}}" 
+     ignore_errors: yes
 
    - name: This is file URL
      ansible.builtin.debug:
