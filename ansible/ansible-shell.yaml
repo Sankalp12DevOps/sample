@@ -1,0 +1,11 @@
+- name: this is play2
+  hosts: all
+
+  tasks:
+   - name: this is a shell command
+     ansible.builtin.shell: uptime
+     register: OUT
+    
+   - name: print the output of shell command
+     ansible.builtin.debug: 
+      msg: {{OUT.stdout}}
