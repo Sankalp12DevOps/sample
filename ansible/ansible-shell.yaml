@@ -9,3 +9,7 @@
    - name: print the output of shell command
      ansible.builtin.debug: 
       msg: {{OUT.stdout}}
+
+   - name: print the fact i.e exit code
+     ansible.builtin.set_fact:
+      

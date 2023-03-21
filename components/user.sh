@@ -1,6 +1,6 @@
-source components/common.sh
 APP=redis
 COMPONENT=redis
+source components/common.sh
 
 
 
