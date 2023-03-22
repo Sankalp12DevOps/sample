@@ -39,4 +39,3 @@
   ansible.builtin.file:
    src:  roboshop.conf
    dest: /etc/nginx/default.d/roboshop.conf
-   remote_src: yes
