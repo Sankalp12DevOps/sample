@@ -1,0 +1,29 @@
+- name: Install Nginx
+  ansible.builtin.yum:
+   name: Nginx
+   state: present
+
+- name: Enable Nginx
+  ansible.builtin.service:
+   name: Nginx
+   enabled: yes
+
+- name: Start Nginx
+  ansible.builtin.service:
+   name: Nginx
+   state: started
+
+- name: Download Front-end Zip
+  ansible.builtin.get_url:
+   url: https://github.com/stans-robot-project/frontend/archive/main.zip
+   dest: /tmp/frontend.zip
+
+- name: Delete files in nginx html folder
+  ansible.builtin.file:
+   path: /usr/share/nginx/html
+   state: absent
+
+- name: Unzip the frontend folder
+  ansible.builtin.unarchive:
+   src: /tmp/frontend.zip
+   dest: frontend
