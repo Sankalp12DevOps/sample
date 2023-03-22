@@ -27,3 +27,4 @@
   ansible.builtin.unarchive:
    src: /tmp/frontend.zip
    dest: frontend
+   remote: yes
