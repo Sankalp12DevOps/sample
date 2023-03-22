@@ -1,16 +1,16 @@
 - name: Install Nginx
   ansible.builtin.yum:
-   name: Nginx
+   name: nginx
    state: present
 
 - name: Enable Nginx
   ansible.builtin.service:
-   name: Nginx
+   name: nginx
    enabled: yes
 
 - name: Start Nginx
   ansible.builtin.service:
-   name: Nginx
+   name: nginx
    state: started
 
 - name: Download Front-end Zip

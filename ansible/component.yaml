@@ -1,4 +1,5 @@
 - name: Playbook1
   hosts: all
+  become: yes
   roles:
    - frontend
