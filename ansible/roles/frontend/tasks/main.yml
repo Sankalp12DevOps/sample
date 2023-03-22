@@ -26,5 +26,5 @@
 - name: Unzip the frontend folder
   ansible.builtin.unarchive:
    src: /tmp/frontend.zip
-   dest: frontend
+   dest: /tmp
    remote: yes
