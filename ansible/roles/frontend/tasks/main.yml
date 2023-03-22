@@ -26,5 +26,16 @@
 - name: Unzip the frontend folder
   ansible.builtin.unarchive:
    src: /tmp/frontend.zip
-   dest: /home/centos/
+   dest: /tmp
    remote_src: yes
+
+- name: move all static content to nginx folder
+  ansible.builtin.file:
+   src: /tmp/frontend-main/static/
+   dest: /usr/share/nginx/html
+   remote_src: yes
+
+- name: move localhost conf to nginx folder
+  ansible.builtin.file:
+   src:  roboshop.conf
+   dest: /etc/nginx/default.d/roboshop.conf
