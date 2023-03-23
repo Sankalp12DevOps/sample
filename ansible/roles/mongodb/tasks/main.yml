@@ -16,7 +16,7 @@
 
 - name: Enable mongo service
   ansible.builtin.service:
-   name: mongodb
+   name: mongod
    enabled: yes
 - name: start mongod service
   ansible.builtin.service:
