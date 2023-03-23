@@ -13,7 +13,7 @@
 - name: Download the {{COMPONENT}} Zip
   ansible.builtin.unarchive:
    src: "https://github.com/stans-robot-project/catalogue/archive/main.zip"
-   dest: /tmp/catalogue.zip
+   dest: /tmp
    remote_src: yes
 
 - name: Delte everything in {{USER}}/{{COMPONENT}}
@@ -21,16 +21,10 @@
    path: /home/{{USER}}/{{COMPONENT}}
    state: absent
 
-- name: unarchive application Zip
-  ansible.builtin.unarchive:
-   src: /tmp/catalogue.zip
-   dest: /home/{{USER}}/
-   remote_src: yes
-
 - name: Copy the file to a new folder
   ansible.builtin.copy:
-   src: /home{{USER}}/{{COMPONENT}}-main
-   dest: /home/{{USER}}/{{COMPONENT}}
+   src: /tmp/{{COMPONENT}}-main/
+   dest: /home/{{USER}}/{{COMPONENT}}/
 
 - name: delete the old file
   ansible.builtin.file:
