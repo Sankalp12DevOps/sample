@@ -18,6 +18,7 @@
   ansible.builtin.service:
    name: mongod
    enabled: yes
+
 - name: start mongod service
   ansible.builtin.service:
    name: mongod
@@ -36,4 +37,9 @@
   loop:
      - catalogue
      - users
+
+- name: Restart mongod service
+  ansible.builtin.service:
+   name: mongod
+  state: restarted
    

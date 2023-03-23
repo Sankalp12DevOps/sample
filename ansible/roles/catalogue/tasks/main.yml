@@ -1,0 +1,71 @@
+- name: Install Node repo
+  ansible.builtin.shell: curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
+
+- name: Install NOdejs
+  ansible.builtin.yum_repository:
+   name: nodejs
+   state: present
+
+- name: add roboshop user
+  ansible.builtin.user:
+   name: "{{USER}}"
+
+- name: Download the {{COMPONENT}} Zip
+  ansible.builtin.unarchive:
+   src: "https://github.com/stans-robot-project/catalogue/archive/main.zip"
+   dest: /tmp/catalogue.zip
+   src_remote: yes
+
+- name: Delte everything in {{USER}}/{{COMPONENT}}
+  ansible.builtin.file:
+   path: /home/{{USER}}/{{COMPONENT}}
+   state: absent
+
+- name: unarchive application Zip
+  ansible.builtin.unarchive:
+   src: /tmp/catalogue.zip
+   dest: /home/{{USER}}/
+   remote_src: yes
+
+- name: Copy the file to a new folder
+  ansible.builtin.copy:
+   src: /home{{USER}}/{{COMPONENT}}-main
+   dest: /home/{{USER}}/{{COMPONENT}}
+
+- name: delete the old file
+  ansible.builtin.file:
+   path: /home/{{USER}}/{{COMPONENT}}-main
+   state: absent
+
+- name: Perform NPM Install
+  community.general.npm module:
+   path: /home/{{USER/{{COMPONENT}}}} 
+
+- name: replace the mongodb with the DNS name
+  ansible.builtin.replace:
+   path: /home/{{USER}}/{{COMPONENT}}/systemd.service
+   regexp: 'MONGO_DNSNAME'
+   replace: '{{COMPONENT}}.roboshop.internal'
+
+- name: copy systemd.service of {{COMPONENT}} to systemd file
+  ansible.builtin.copy: 
+   src: /home/{{USER}}/{{COMPONENT}}/systemd.service
+   dest: /etc/systemd/system/{COMPONENT}.service
+
+- name: Reload service {{COMPONENT}}, in all cases
+  ansible.builtin.service:
+    name: {{COMPONENT}}
+    state: reloaded
+
+- name: Enable service {{COMPONENT}}, and not touch the state
+  ansible.builtin.service:
+    name: {{COMPONENT}}
+    enabled: yes
+
+- name: start {{COMPONENT}} service
+  ansible.builtin.service:
+   name: {{COMPONENT}}
+   state: started
+ 
+   
+
