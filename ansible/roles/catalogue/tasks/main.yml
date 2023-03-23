@@ -49,14 +49,13 @@
    remote_src: yes
 
 - name: Enable service {{COMPONENT}}, and not touch the state
-  ansible.builtin.service:
-    name: "{{COMPONENT}}"
+  ansible.builtin.systemd:
+    state: restarted
+    daemon_reload: true
     enabled: yes
+    name: "{{COMPONENT}}"
 
-- name: start {{COMPONENT}} service
-  ansible.builtin.service:
-   name: "{{COMPONENT}}"
-   state: started
+
  
    
 
