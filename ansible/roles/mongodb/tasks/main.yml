@@ -6,7 +6,7 @@
 - name: install mongodb
   ansible.builtin.yum:
    name: mongodb-org
-    state: present
+   state: present
 
 - name: replace the IP with 0.0.0.0
   ansible.builtin.replace:
