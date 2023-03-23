@@ -39,7 +39,7 @@
 
 - name: Perform NPM Install
   community.general.npm module:
-   path: /home/{{USER/{{COMPONENT}}}} 
+   path: /home/{{USER}}/{{COMPONENT}}
 
 - name: replace the mongodb with the DNS name
   ansible.builtin.replace:
@@ -54,17 +54,17 @@
 
 - name: Reload service {{COMPONENT}}, in all cases
   ansible.builtin.service:
-    name: {{COMPONENT}}
+    name: "{{COMPONENT}}"
     state: reloaded
 
 - name: Enable service {{COMPONENT}}, and not touch the state
   ansible.builtin.service:
-    name: {{COMPONENT}}
+    name: "{{COMPONENT}}"
     enabled: yes
 
 - name: start {{COMPONENT}} service
   ansible.builtin.service:
-   name: {{COMPONENT}}
+   name: "{{COMPONENT}}"
    state: started
  
    
