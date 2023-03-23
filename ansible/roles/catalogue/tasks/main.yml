@@ -14,7 +14,7 @@
   ansible.builtin.unarchive:
    src: "https://github.com/stans-robot-project/catalogue/archive/main.zip"
    dest: /tmp/catalogue.zip
-   src_remote: yes
+   remote_src: yes
 
 - name: Delte everything in {{USER}}/{{COMPONENT}}
   ansible.builtin.file:
