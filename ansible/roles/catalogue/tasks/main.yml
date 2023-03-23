@@ -48,11 +48,6 @@
    dest: /etc/systemd/system/{COMPONENT}.service
    remote_src: yes
 
-- name: Reload service {{COMPONENT}}, in all cases
-  ansible.builtin.service:
-    name: "{{COMPONENT}}"
-    state: reloaded
-
 - name: Enable service {{COMPONENT}}, and not touch the state
   ansible.builtin.service:
     name: "{{COMPONENT}}"
