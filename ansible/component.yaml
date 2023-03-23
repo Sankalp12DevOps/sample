@@ -1,5 +1,5 @@
 - name: Playbook1
-  hosts: {COMPONENT}
+  hosts: {{COMPONENT}}
   become: yes
   roles:
-   - {COMPONENT}
+   - {{COMPONENT}}
