@@ -38,7 +38,7 @@
    state: absent
 
 - name: Perform NPM Install
-  community.general.npm module:
+  community.general.npm:
    path: /home/{{USER}}/{{COMPONENT}}
 
 - name: replace the mongodb with the DNS name
