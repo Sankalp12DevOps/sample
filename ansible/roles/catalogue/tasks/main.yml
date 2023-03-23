@@ -25,6 +25,7 @@
   ansible.builtin.copy:
    src: /tmp/{{COMPONENT}}-main/
    dest: /home/{{USER}}/{{COMPONENT}}/
+   remote_src: yes
 
 - name: delete the old file
   ansible.builtin.file:
