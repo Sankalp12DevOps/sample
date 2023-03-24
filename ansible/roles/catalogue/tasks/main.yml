@@ -1,4 +1,4 @@
 - name: Install all components for {{COMPONENT}}
   ansible.builtin.include_role:
    name: common
-   role: node
+   tasks_from: node
