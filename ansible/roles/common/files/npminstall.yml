@@ -1,0 +1,3 @@
+- name: Perform NPM Install
+  community.general.npm:
+   path: /home/{{USER}}/{{COMPONENT}}

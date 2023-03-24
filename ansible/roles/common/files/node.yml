@@ -1,0 +1,37 @@
+- name: Install Node repo for {{COMPONENT}}
+  ansible.builtin.shell: curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
+
+- name: Install NOdejs for {{COMPONENT}}
+  ansible.builtin.package:
+   name: nodejs
+   state: present
+
+- name: Add {{USER}} user
+  ansible.builtin.include_role:
+    name: common
+    tasks: adduser
+
+- name: Add Roboshop user
+  ansible.builtin.include_role:
+    name: common
+    tasks: download
+
+- name: Download of {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common
+    tasks: download
+
+- name: NPM Install of {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common
+    tasks: npminstall
+
+- name: DNS update {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common
+    tasks: dnsupdate
+
+- name: System service {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common
+    tasks: systemservice

@@ -1,0 +1,6 @@
+
+- name: replace the mongodb with the DNS name
+  ansible.builtin.replace:
+   path: /home/{{USER}}/{{COMPONENT}}/systemd.service
+   regexp: 'MONGO_DNSNAME'
+   replace: '{{COMPONENT}}.roboshop.internal'
