@@ -9,29 +9,29 @@
 - name: Add {{USER}} user
   ansible.builtin.include_role:
     name: common
-    tasks: adduser
+    tasks_from: adduser
 
 - name: Add Roboshop user
   ansible.builtin.include_role:
     name: common
-    tasks: download
+    tasks_from: download
 
 - name: Download of {{COMPONENT}}
   ansible.builtin.include_role:
     name: common
-    tasks: download
+    tasks_from: download
 
 - name: NPM Install of {{COMPONENT}}
   ansible.builtin.include_role:
     name: common
-    tasks: npminstall
+    tasks_from: npminstall
 
 - name: DNS update {{COMPONENT}}
   ansible.builtin.include_role:
     name: common
-    tasks: dnsupdate
+    tasks_from: dnsupdate
 
 - name: System service {{COMPONENT}}
   ansible.builtin.include_role:
     name: common
-    tasks: systemservice
+    tasks_from: systemservice
