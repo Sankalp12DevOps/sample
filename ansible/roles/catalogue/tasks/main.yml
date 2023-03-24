@@ -45,7 +45,7 @@
 - name: copy systemd.service of {{COMPONENT}} to systemd file
   ansible.builtin.copy: 
    src: /home/{{USER}}/{{COMPONENT}}/systemd.service
-   dest: /etc/systemd/system/{COMPONENT}.service
+   dest: /etc/systemd/system/{{COMPONENT}}.service
    remote_src: yes
 
 - name: Enable service {{COMPONENT}}, and not touch the state
