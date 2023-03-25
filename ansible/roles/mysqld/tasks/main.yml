@@ -16,24 +16,31 @@
    name: common
    tasks_from: systemservice
 
+  Block:
+    - name: Get MySQL version with non-default credentials
+      community.mysql.mysql_info:
+        login_user: root
+        login_password: RoboShop@1
+        filter: version
+  Rescue:
+    - name: Register text present in mysqld.log
+      ansible.builtin.slurp:
+        src: /var/log/mysqld.log
+      register: mounts
 
-- name: Register text present in mysqld.log
-  ansible.builtin.slurp:
-    src: /var/log/mysqld.log
-  register: mounts
+    - name: Print returned information
+      ansible.builtin.set_fact:
+        temp_pwd: "{{ mounts['content'] | b64decode | regex_findall('.*A temporary password is.*')| join('') | split(': ') | last}}" 
 
-- name: Print returned information
-  ansible.builtin.set_fact:
-    temp_pwd: "{{ mounts['content'] | b64decode | regex_findall('.*A temporary password is.*')| join('') | split(': ') | last}}" 
+    - name: print the set fact password captured
+      ansible.builtin.debug:
+      msg: "{{temp_pwd}}"
 
-- name: print the set fact password captured
-  ansible.builtin.debug:
-   msg: "{{temp_pwd}}"
+    - name: Create database user with name 'bob' and password '12345' with all database privileges
+      ansible.builtin.shell:
+        echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{temp_pwd}}"
 
-- name: Create database user with name 'bob' and password '12345' with all database privileges
-  community.mysql.mysql_user:
-    name: root
-    password: "{{temp_pwd}}"
-    priv: '*.*:ALL'
-    state: present
-
+- name: Remove Validate_password plugin
+  ansible.builtin.package:
+     name: validate_password
+     state: absent
