@@ -11,3 +11,12 @@
     daemon_reload: true
     enabled: yes
     name: "{{COMPONENT}}"
+
+- name: Register text present in mysqld.log
+  ansible.builtin.slurp:
+    src: /var/log/mysqld.log
+  register: mounts
+
+- name: Print returned information
+  ansible.builtin.debug:
+    msg: "{{ mounts['content'] | b64decode }}"
