@@ -8,3 +8,9 @@
      name: mysql-community-server
      state: present
 
+
+- name: enable and start the service
+  ansible.builtin.include_role:
+   name: common
+   tasks_from: systemservice
+
