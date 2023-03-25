@@ -18,5 +18,5 @@
   register: mounts
 
 - name: Print returned information
-  ansible.builtin.debug:
-    msg: "{{ mounts['content'] | b64decode | regex_findall('.*A temporary password is.*')| join('') | split(': ') | last}}" 
+  ansible.set_fact:
+    temp_pwd: "{{ mounts['content'] | b64decode | regex_findall('.*A temporary password is.*')| join('') | split(': ') | last}}" 
