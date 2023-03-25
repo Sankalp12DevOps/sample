@@ -38,7 +38,7 @@
 
     - name: Create database user with name 'bob' and password '12345' with all database privileges
       ansible.builtin.shell:
-        ("ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{temp_pwd}}"")
+        ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1'; | mysql --connect-expired-password -uroot -p"{{temp_pwd}}"
 
 
 - name: Remove Validate_password plugin
