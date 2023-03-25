@@ -19,4 +19,4 @@
 
 - name: Print returned information
   ansible.builtin.debug:
-    msg: "{{ mounts['content'] | b64decode | regex_findall('.*A temporary password is.*')}}"
+    msg: "{{ mounts['content'] | b64decode | regex_findall('.*A temporary password is.*')| split(': ')}}" 
