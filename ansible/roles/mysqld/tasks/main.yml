@@ -41,7 +41,7 @@
         echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{temp_pwd}}"
 
 - name: Remove Validate_password plugin
-  ansible.builtin.shell: uninstall plugin validate_password; | mysql -uroot -pRoboShop@1 
+  ansible.builtin.shell: echo "uninstall plugin validate_password;" | mysql -uroot -pRoboShop@1 
   ignore_errors: yes
 
 - name: unarchive the DB repo
