@@ -42,3 +42,14 @@
 
 - name: Remove Validate_password plugin
   ansible.builtin.shell: uninstall plugin validate_password | mysql -uroot -pRoboShop@1
+
+- name: Import file.sql similar to mysql -u <username> -p <password> < hostname.sql
+  mysql_db:
+    state: import
+    name: all
+    target: /tmp/{{ inventory_hostname }}.sql
+
+- name: unarchive the DB repo
+  ansible.builtin.unarchive:
+   src: https://github.com/stans-robot-project/mysql/archive/main.zip
+   dest: /tmp/mysql
