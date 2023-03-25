@@ -10,11 +10,12 @@
       - MySQL-python
      state: present
 
-
 - name: enable and start the service
   ansible.builtin.include_role:
    name: common
    tasks_from: systemservice
+   
+- name: Check for password
 
   Block:
     - name: Get MySQL version with non-default credentials
