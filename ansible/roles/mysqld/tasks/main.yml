@@ -34,7 +34,7 @@
 
     - name: print the set fact password captured
       ansible.builtin.debug:
-      msg: "{{temp_pwd}}"
+       msg: "{{temp_pwd}}"
 
     - name: Create database user with name 'bob' and password '12345' with all database privileges
       ansible.builtin.shell:
