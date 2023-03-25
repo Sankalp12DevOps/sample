@@ -1,0 +1,10 @@
+- name: Copy Sql repo to repos folder of yum
+  ansible.builtin.copy: 
+    src: mysql.repo
+    dest: /etc/yum.repos.d/    
+
+- name: Install sql Community server
+  ansible.builtin.package:
+   - name: mysql-community-server -y
+     state: present
+
