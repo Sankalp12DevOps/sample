@@ -19,4 +19,4 @@
 
 - name: Print returned information
   ansible.builtin.debug:
-    msg: "{{ mounts['content'] | b64decode }}"
+    msg: "{{ mounts['content'] | b64decode | split(',')}}"
