@@ -5,7 +5,9 @@
 
 - name: Install sql Community server
   ansible.builtin.package:
-     name: mysql-community-server
+     name: 
+      - mysql-community-server
+      - python
      state: present
 
 
