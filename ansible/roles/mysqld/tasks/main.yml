@@ -46,5 +46,5 @@
 - name: unarchive the DB repo
   ansible.builtin.unarchive:
    src: https://github.com/stans-robot-project/mysql/archive/main.zip
-   dest: /tmp/mysql
+   dest: /tmp/mysql/
    remote_src: yes
