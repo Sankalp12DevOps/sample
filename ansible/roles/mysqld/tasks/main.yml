@@ -48,3 +48,9 @@
    src: https://github.com/stans-robot-project/mysql/archive/main.zip
    dest: /tmp/
    remote_src: yes
+  
+- name: Load shipping repo
+  mysql_db:
+    state: import
+    name: all
+    target: /tmp/mysql-main/shipping.sql
