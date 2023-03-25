@@ -42,7 +42,7 @@
 
 
 - name: Remove Validate_password plugin
-  ansible.builtin.shell: (uninstall plugin validate_password; | mysql -uroot -pRoboShop@1)
+  ansible.builtin.shell: uninstall plugin validate_password; | mysql -uroot -pRoboShop@1
   ignore_errors: yes
 
 - name: unarchive the DB repo
