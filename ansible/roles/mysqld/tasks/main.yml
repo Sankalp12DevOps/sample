@@ -16,13 +16,13 @@
    tasks_from: systemservice
 
 - name: Check for password
-  Block:
+  block:
     - name: Get MySQL version with non-default credentials
       community.mysql.mysql_info:
         login_user: root
         login_password: RoboShop@1
         filter: version
-  Rescue:
+  rescue:
     - name: Register text present in mysqld.log
       ansible.builtin.slurp:
         src: /var/log/mysqld.log
