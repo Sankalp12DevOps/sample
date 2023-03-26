@@ -23,13 +23,13 @@
 - name: update uid
   ansible.builtin.lineinfile:
     path: /home/{{USER}}/{{COMPONENT}}/payment.ini
-    search_string: '^uid = '
+    regex: '^uid = '
     line: uid = {{APPUSERINFO.uid}}
 
 - name: update gid
   ansible.builtin.lineinfile:
     path: /home/{{USER}}/{{COMPONENT}}/payment.ini
-    search_string: '^gid = '
+    regex: '^gid = '
     line: gid = {{APPUSERINFO.group}}
   
 
