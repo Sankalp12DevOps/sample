@@ -9,7 +9,7 @@
 - name: create roboshop user
   ansible.builtin.include_role:
    name: common
-   tasks_from: 
+   tasks_from: adduser
 
 - name: print the uid and gid
   ansible.builtin.debug:
