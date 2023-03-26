@@ -4,7 +4,6 @@
      - python36 
      - gcc 
      - python3-devel4
-     - pip3.3
 
 
 - name: create roboshop user
@@ -20,4 +19,4 @@
 - name:  pip install {{COMPONENT}} module
   ansible.builtin.pip:
    name: /home/{{USER}}/{{COMPONENT}}/
-   executable: pip3.3
+   executable: pip3
