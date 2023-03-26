@@ -2,3 +2,10 @@
   ansible.builtin.include_role: 
    name: common
    tasks_from: python
+
+- name: copy systemd.service of {{COMPONENT}} to systemd file
+  ansible.builtin.copy: 
+   src: systemd.service
+   dest: /etc/systemd/system/{{COMPONENT}}.service
+   remote_src: yes
+  ignore_errors: true
