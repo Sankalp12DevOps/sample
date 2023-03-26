@@ -7,5 +7,4 @@
   ansible.builtin.copy: 
    src: systemd.service
    dest: /etc/systemd/system/{{COMPONENT}}.service
-   remote_src: yes
   ignore_errors: true
