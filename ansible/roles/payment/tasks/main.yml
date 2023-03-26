@@ -1,0 +1,4 @@
+- name: Call Python module steps
+  ansible.builtin.include_role: 
+   name: common
+   include_tasks: python
