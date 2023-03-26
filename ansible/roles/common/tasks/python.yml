@@ -31,9 +31,10 @@
     path: /home/{{USER}}/{{COMPONENT}}/payment.ini
     search_string: '^gid = '
     line: gid = {{APPUSERINFO.group}}
-
+  
 
 - name:  pip install {{COMPONENT}} module
   ansible.builtin.pip:
    name: /home/{{USER}}/{{COMPONENT}}/requirements.txt
    executable: pip3
+   user: {{USER}}
