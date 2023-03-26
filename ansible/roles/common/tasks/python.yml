@@ -15,9 +15,23 @@
   ansible.builtin.debug:
    msg: "{{APPUSERINFO}}"
 - name: Download package
+
   ansible.builtin.include_role:
    name: common
    tasks_from: download
+
+- name: update uid
+  ansible.builtin.lineinfile:
+    path: /home/{{USER}}/{{COMPONENT}}/payment.ini
+    search_string: '^uid = '
+    line: uid = {{APPUSERINFO.uid}}
+
+- name: update gid
+  ansible.builtin.lineinfile:
+    path: /home/{{USER}}/{{COMPONENT}}/payment.ini
+    search_string: '^gid = '
+    line: gid = {{APPUSERINFO.group}}
+
 
 - name:  pip install {{COMPONENT}} module
   ansible.builtin.pip:

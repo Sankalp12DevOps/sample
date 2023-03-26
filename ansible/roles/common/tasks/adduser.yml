@@ -2,7 +2,3 @@
   ansible.builtin.user:
    name: "{{USER}}"
   register: APPUSERINFO
-
-- name: print the userinfo
-  ansible.builtin.debug:
-   msg: "{{APPUSERINFO}}"
