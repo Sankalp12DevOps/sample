@@ -3,7 +3,7 @@
     name: 
      - python36 
      - gcc 
-     - python3-devel4
+     - python3-devel
 
 
 - name: create roboshop user
