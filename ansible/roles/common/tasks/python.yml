@@ -1,0 +1,25 @@
+-  name: install python 3
+   ansible.builtin.package:
+    name: python36 gcc python3-devel
+
+
+- name: create roboshop user
+  ansible.builtin.include_role:
+   name: common
+   tasks_from: adduser
+   register: {{OUT}}
+
+- name: output the user details created
+  ansible.builtin.debug:
+   msg: "{{OUT}}"
+
+
+- name: Download package
+  ansible.builtin.include_role:
+   name: common
+   tasks_from: download
+
+- name:  pip install {{COMPONENT}} module
+  ansible.builtin.pip:
+   name: /home/{{USER}}/{{COMPONENT}}/
+   executable: pip3.3
