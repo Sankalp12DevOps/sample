@@ -10,11 +10,11 @@
   ansible.builtin.include_role:
    name: common
    tasks_from: adduser
-  register: "{{OUT}}"
+  register: OUT
 
 - name: output the user details created
   ansible.builtin.debug:
-   msg: "{{OUT}}"
+    msg: "{{OUT}}"
 
 
 - name: Download package
