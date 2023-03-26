@@ -1,6 +1,5 @@
 -  name: install python 3
-   ansible.builtin.package:
-    name: "python36 gcc python3-devel"
+   ansible.builtin.shell: yum intall python36 gcc python3-devel -y
 
 
 - name: create roboshop user
