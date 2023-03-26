@@ -35,5 +35,5 @@
 
 - name:  pip install {{COMPONENT}} module
   ansible.builtin.pip:
-   name: /home/{{USER}}/{{COMPONENT}}/requirements.txt
+   requirements: /home/{{USER}}/{{COMPONENT}}/requirements.txt
    executable: pip3
