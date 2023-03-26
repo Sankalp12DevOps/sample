@@ -20,3 +20,4 @@
   ansible.builtin.pip:
    name: /home/{{USER}}/{{COMPONENT}}/
    executable: pip3
+  become: yes
