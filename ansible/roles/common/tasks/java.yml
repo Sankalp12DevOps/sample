@@ -1,0 +1,28 @@
+- name: Install java & Maven
+  ansible.builtin.package:
+   name: Maven
+   state: present
+
+- name: add roboshop user
+  ansible.builtin.include_role:
+   name: common
+   tasks_from: adduser
+
+
+- name: add roboshop user
+  ansible.builtin.include_role:
+   name: common
+   tasks_from: download
+
+- name: Do Mvn clean package
+  ansible.builtin.shell: mvn clean package &&  mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+  args:
+   chdir: /home/{{USER}}/{{COMPONENT}}
+
+- name: Start Systemd.service of Shipping
+  ansible.builtin.include_role:
+   name: common
+   include_tasks: systemservice
+
+
+
