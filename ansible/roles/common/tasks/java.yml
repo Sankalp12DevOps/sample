@@ -1,6 +1,6 @@
 - name: Install java & Maven
   ansible.builtin.package:
-   name: Maven
+   name: maven
    state: present
 
 - name: add roboshop user
