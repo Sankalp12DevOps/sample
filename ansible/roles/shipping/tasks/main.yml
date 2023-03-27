@@ -1,0 +1,5 @@
+- name: Deploy stall Shipping component
+  ansible.builtin.include_role:
+   name: common
+   include_tasks: shipping
+ 
