@@ -1,0 +1,27 @@
+- name: install erland
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
+
+- name: Install rabbitmq
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
+
+- name: Install rabbit MQ
+  ansible.builtin.package:
+   name: rabbitmq-server
+   state: present
+
+- name: start rabbitmq-server
+  ansible.builtin.include_role:
+   name: common
+   tasks_from: systemservice
+
+- name: |-
+    Add user to server and assign full access control on / vhost.
+    The user might have permission rules for other vhost but you don't care.
+  community.rabbitmq.rabbitmq_user:
+    user: roboshop
+    password: roboshop123
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present

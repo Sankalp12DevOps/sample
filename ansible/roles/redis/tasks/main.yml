@@ -1,0 +1,21 @@
+- name: copy redisc repo to etcs folder
+  ansible.builtin.copy:
+   src: redis.repo
+   dest: /etc/yum.repos.d/
+
+- name: replace hostname with new IP
+  ansible.builtin.replace:
+   path: /etc/redis.conf
+   regex: '127.0.0.1'
+   replace: '0.0.0.0'
+
+- name: replace hostname with new IP
+  ansible.builtin.replace:
+   path: /etc/redis/redis.conf
+   regex: '127.0.0.1'
+   replace: '0.0.0.0'
+
+- name: start service
+  ansible.builtin.include_role:
+   name: common
+   tasks_from: systemservice

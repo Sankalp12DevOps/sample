@@ -19,6 +19,8 @@
   args:
    chdir: /home/{{USER}}/{{COMPONENT}}
 
+   
+
 - name: Start Systemd.service of Shipping
   ansible.builtin.include_role:
    name: common
