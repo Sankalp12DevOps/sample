@@ -4,7 +4,7 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'MONGO_DNSNAME'
    replace: 'mongodb.roboshop.internal'
-  when: "{{COMPONENT}}" == catalogue
+  when: "{{COMPONENT}}" == 'catalogue'
 
 
 
@@ -13,7 +13,7 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'MONGO_ENDPOINT'
    replace: 'mongodb.roboshop.internal'
-  when: "{{COMPONENT}}" == user or "{{COMPONENT}}" == catalogue
+  when: "{{COMPONENT}}" == 'user' or "{{COMPONENT}}" == 'catalogue'
  
 - name: replace the component with the DNS name
   ansible.builtin.replace:
