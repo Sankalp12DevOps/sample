@@ -4,7 +4,7 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'MONGO_DNSNAME'
    replace: 'mongodb.roboshop.internal'
-  when: "{{COMPONENT}}" == 'catalogue'
+  when: "{{COMPONENT}}"=='catalogue'
 
 
 
