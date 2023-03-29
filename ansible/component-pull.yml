@@ -1,0 +1,5 @@
+- name: Playbook1
+  hosts: localhost
+  become: yes
+  roles:
+   - "{{COMPONENT}}"
