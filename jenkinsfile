@@ -12,7 +12,6 @@ pipeline{
        '''
     }
    }
-
    stage('Stage 2'){
     sh '''
      echo this is second stage
