@@ -1,0 +1,30 @@
+pipeline{
+  agent any
+  
+  stages{
+   
+   stage('Stage-1'){
+    steps{
+     
+     sh '''
+     echo this is my new job
+       
+       '''
+    }
+   }
+
+   stage('Stage 2'){
+    sh '''
+     echo this is second stage
+      '''
+
+   }
+
+
+
+  }
+
+
+
+
+}
