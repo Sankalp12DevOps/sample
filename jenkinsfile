@@ -1,13 +1,25 @@
 pipeline{
   agent any
+
+  environment{
+
+   url = 'sankalp.mandapati.free.com'
+   username = 'hello world'
+
+  }
   
   stages{
    
    stage('Stage-1'){
     steps{
+      environment {
+        url = 'neyavva.com0'
+        uname = 'hello'
+      }
      
      sh '''
-     echo this is my new job
+     echo this is my new job ${url}
+     echo hi this is ${uname}
        
        '''
     }
