@@ -34,9 +34,11 @@ pipeline{
      sh '''
      echo this is my new job ${url}
      echo hi this is ${uname}
-     echo password is ${password}
-     echo person is ${person}
-     echo biography ${choice}
+     echo password is ${PERSON}
+     echo person is ${BIOGRAPHY}
+     echo biography ${TOGGLE}
+     echo biography ${CHOICE}
+     echo biography ${PASSWORD}
      
        
        '''
