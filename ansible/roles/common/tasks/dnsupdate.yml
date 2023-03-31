@@ -25,6 +25,13 @@
 - name: replace the component with the DNS name
   ansible.builtin.replace:
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
+   regexp: 'CATALOGUE_ENDPOINT'
+   replace: 'catalogue-{{ENV}}.roboshop.internal'
+  when: COMPONENT == "cart"
+
+- name: replace the component with the DNS name
+  ansible.builtin.replace:
+   path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'CART_ENDPOINT'
    replace: 'cart-{{ENV}}.roboshop.internal'
   when: COMPONENT == "shipping"
