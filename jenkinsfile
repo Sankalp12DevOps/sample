@@ -29,6 +29,9 @@ pipeline{
     steps{
     sh '''
      echo this is second stage
+     echo this is my new job ${url}
+     echo hi this is ${uname}
+       
       '''
    }
    }
