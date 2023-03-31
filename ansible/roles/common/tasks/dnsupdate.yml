@@ -4,6 +4,7 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'MONGO_DNSNAME'
    replace: 'mongodb.roboshop.internal'
+   remote_src: yes
   when: COMPONENT == "catalogue"
 
 
@@ -13,6 +14,7 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'MONGO_ENDPOINT'
    replace: 'mongodb.roboshop.internal'
+   remote_src: yes
   when: COMPONENT == "user" or COMPONENT == "catalogue"
  
 - name: replace the component with the DNS name
@@ -20,6 +22,7 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'REDIS_ENDPOINT'
    replace: 'redis.roboshop.internal'
+   remote_src: yes
   when: COMPONENT == "user" or COMPONENT == "cart"
 
 - name: replace the component with the DNS name
@@ -27,6 +30,7 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'REDIS_ENDPOINT'
    replace: 'redis.roboshop.internal'
+   remote_src: yes
   when: COMPONENT == "user"
 
 - name: replace the component with the DNS name
@@ -34,6 +38,7 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'CATALOGUE_ENDPOINT'
    replace: 'redis.roboshop.internal'
+   remote_src: yes
   when: COMPONENT == "catalogue"
 
 - name: replace the component with the DNS name
@@ -41,6 +46,7 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'CART_ENDPOINT'
    replace: 'cart.roboshop.internal'
+   remote_src: yes
   when: COMPONENT == "shipping"
 
 
@@ -49,4 +55,5 @@
    path: /home/{{USER}}/{{COMPONENT}}/systemd.service
    regexp: 'DBHOST'
    replace: 'mysqldb.roboshop.internal'
+   remote_src: yes
   when: COMPONENT == "shipping"
