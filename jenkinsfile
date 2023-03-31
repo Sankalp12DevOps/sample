@@ -5,6 +5,7 @@ pipeline{
 
    url = 'sankalp.mandapati.free.com'
    username = 'hello world'
+   userCreds = credentials('Jenkins_Cred')
 
   }
   
@@ -31,7 +32,8 @@ pipeline{
      echo this is second stage
      echo this is my new job ${url}
      echo hi this is ${uname}
-       
+     echo ${userCreds_USR}
+        echo ${userCreds_PSW}
       '''
    }
    }
