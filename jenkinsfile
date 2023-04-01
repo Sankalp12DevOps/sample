@@ -45,6 +45,15 @@ pipeline{
     }
    }
    stage('Stage 2'){
+    when{
+
+    branch 'stage'
+    anyOf{
+
+      environment name: 'sankalp' value: 'hello'
+    }
+
+    }
     steps{
     sh '''
      echo this is second stage
