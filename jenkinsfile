@@ -50,7 +50,7 @@ pipeline{
     branch 'stage'
     anyOf{
 
-      environment name: 'sankalp' value: 'hello'
+      environment name: 'sankalp', value: 'hello'
     }
 
     }
