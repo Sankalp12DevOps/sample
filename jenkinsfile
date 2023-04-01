@@ -53,6 +53,8 @@ pipeline{
      echo ${userCreds_USR}
         echo ${userCreds_PSW}
       '''
+    def hello = read(build.log)
+    $hello
    }
    }
 
