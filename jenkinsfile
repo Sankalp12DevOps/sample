@@ -1,75 +1,22 @@
 pipeline{
-  agent build
-
-   parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-    }
-
+  agent {label 'build'}
 
   environment{
 
    url = 'sankalp.mandapati.free.com'
    username = 'hello world'
-   userCreds = credentials('Jenkins_Cred')
+   userCreds = credentials('node1')
   }
   
   stages{
    
    stage('Stage-1'){
-    environment {
-        url = 'neyavva.com0'
-        uname = 'hello'
-      }
     steps{
       
+      sh "ansible-playbook -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=mongodb -e env=qa ansible/ansible-dryrun.yml"
      
-     sh '''
-     echo this is my new job ${url}
-     echo hi this is ${uname}
-     echo password is ${PERSON}
-     echo person is ${BIOGRAPHY}
-     echo biography ${TOGGLE}
-     echo biography ${CHOICE}
-     echo biography ${PASSWORD}
-     
-       
-       '''
     }
    }
-   stage('Stage 2'){
-    when{
 
-    branch 'stage'
-    anyOf{
-
-      environment name: 'sankalp', value: 'hello'
-    }
-
-    }
-    steps{
-    sh '''
-     echo this is second stage
-     echo this is my new job ${url}
-     echo hi this is ${uname}
-     echo ${userCreds_USR}
-        echo ${userCreds_PSW}
-      '''
-   }
-   }
-
-
-
-  }
-
-
-
-
+}
 }
