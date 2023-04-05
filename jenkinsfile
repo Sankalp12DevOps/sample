@@ -10,8 +10,8 @@ pipeline{
   stages{
    
    stage('Stage-1'){
+     when { branch pattern: "PR-.*, comparator: "REGEXP}
     steps{
-      when { branch pattern: "PR-.*, comparator: "REGEXP}
       sh "echo ansible"
       sh "ansible-playbook -e ansible_user=${userCreds_USR} -e ansible_password=${userCreds_PSW} -e COMPONENT=mongodb -e env=qa ansible/ansible-dryrun.yml"
      
