@@ -7,7 +7,6 @@ pipeline{
    username = 'hello world'
    userCreds = credentials('node1')
   }
-  
   stages{
    
    stage('Stage-1'){
