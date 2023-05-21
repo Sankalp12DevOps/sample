@@ -36,7 +36,12 @@
     name: common
     tasks_from: systemservice
 
+- name: filebeat for {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: filebeat
+
 - name: rsyslog for {{COMPONENT}}
   ansible.builtin.include_role:
     name: common
-    tasks_from: systemservice
+    tasks_from: rsyslog
