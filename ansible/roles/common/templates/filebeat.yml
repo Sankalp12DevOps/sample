@@ -1,43 +1,28 @@
 filebeat.inputs:
-
 - type: log
-
-  id: my-filestream-id
   enabled: true
 {% if LOGTYPE == "json" %}  
- json.keys_under_root: true
+  json.keys_under_root: true
 {% endif %}
 
-  # Paths that should be crawled and fetched. Glob based paths.
   paths:
-    - /var/log/{{COMPONENT}}.log
-    #- c:\programdata\elasticsearch\logs\*
-
-fields: 
+    - "{{LOGLOCATION}}"
+  fields: 
     component: "{{COMPONENT}}"
     logtype: json
 
-# ============================== Filebeat modules ==============================
-
 filebeat.config.modules:
-  # Glob pattern for configuration loading
   path: ${path.config}/modules.d/*.yml
-
-  # Set to true to enable config reloading
   reload.enabled: false
-
-# ======================= Elasticsearch template setting =======================
 
 setup.template.settings:
   index.number_of_shards: 1
-# =================================== Kibana ===================================
 
 setup.kibana:
-# ------------------------------ Logstash Output -------------------------------
+
 output.logstash:
-  # The Logstash hosts
-  hosts: ["172.31.94.203:5044"]
-# ================================= Processors =================================
+  hosts: ["172.31.18.27:5044"]
+
 processors:
   - add_host_metadata:
       when.not.contains.tags: forwarded
