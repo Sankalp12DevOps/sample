@@ -13,7 +13,9 @@ filebeat.inputs:
     - /var/log/{{COMPONENT}}.log
     #- c:\programdata\elasticsearch\logs\*
 
-
+fields: 
+    component: "{{COMPONENT}}"
+    logtype: json
 
 # ============================== Filebeat modules ==============================
 
