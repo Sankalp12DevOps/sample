@@ -1,6 +1,6 @@
 - name: Template a file to /etc/logstash/conf.d/logstash.conf
   ansible.builtin.template:
-    src: filebeat.yml
+    src: logstash.conf
     dest: /etc/logstash/conf.d/logstash.conf
 
 
