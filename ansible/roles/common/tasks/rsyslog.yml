@@ -1,0 +1,10 @@
+- name: Template a file to /etc/rsyslog.d/rsyslog.conf
+  ansible.builtin.template:
+    src: rsyslog.conf
+    dest: /etc/rsyslog.d/rsyslog.conf
+
+
+- name: Restart service logstash, in all cases
+  ansible.builtin.service:
+    name: logstash
+    state: restarted

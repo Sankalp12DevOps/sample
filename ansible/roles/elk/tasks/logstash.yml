@@ -1,0 +1,10 @@
+- name: Template a file to /etc/logstash/conf.d/logstash.conf
+  ansible.builtin.template:
+    src: filebeat.yml
+    dest: /etc/logstash/conf.d/logstash.conf
+
+
+- name: Restart service logstash, in all cases
+  ansible.builtin.service:
+    name: logstash
+    state: restarted
