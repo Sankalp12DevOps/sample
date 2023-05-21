@@ -4,7 +4,7 @@
     dest: /etc/rsyslog.d/rsyslog.conf
 
 
-- name: Restart service logstash, in all cases
+- name: Restart service rsyslog, in all cases
   ansible.builtin.service:
-    name: logstash
+    name:  rsyslog
     state: restarted
