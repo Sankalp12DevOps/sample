@@ -5,8 +5,9 @@ filebeat.inputs:
   id: my-filestream-id
   enabled: true
 {% if LOGTYPE == "json" %}  
+
   json.keys_under_root: true
-{% endif %}
+
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
