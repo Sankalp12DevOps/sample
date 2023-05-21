@@ -1,0 +1,16 @@
+- name: Template a file to /etc/logstash/conf.d/logstash.conf
+  ansible.builtin.template:
+    src: filebeat.yml
+    dest: /etc/logstash/conf.d/logstash.conf
+
+
+- name: Restart service logstash, in all cases
+  ansible.builtin.service:
+    name: logstash
+    state: restarted
+
+- name: Wait for logstash port to come up
+  ansible.builtin.wait_for:
+    port: 8000
+    delay: 10
+    timeout: 60

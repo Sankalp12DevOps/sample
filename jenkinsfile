@@ -1,5 +1,5 @@
 pipeline{
-  agent {label 'build'}
+  agent any
 
   environment{
 
@@ -7,13 +7,13 @@ pipeline{
    username = 'hello world'
    userCreds = credentials('node1')
   }
-  
   stages{
    
    stage('Stage-1'){
+     when { branch pattern: "PR-.*", comparator: "REGEXP"}
     steps{
-      
-      sh "ansible-playbook -e ansible_user=centos -e ansible_password=DevOps321 -e COMPONENT=mongodb -e env=qa ansible/ansible-dryrun.yml"
+      sh "echo ansible"
+      sh "ansible-playbook -e ansible_user=${userCreds_USR} -e ansible_password=${userCreds_PSW} -e COMPONENT=mongodb -e env=qa ansible/ansible-dryrun.yml"
      
     }
    }
