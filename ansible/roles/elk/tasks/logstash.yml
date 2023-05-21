@@ -8,3 +8,9 @@
   ansible.builtin.service:
     name: logstash
     state: restarted
+
+- name: Wait for logstash port to come up
+  ansible.builtin.wait_for:
+    port: 8000
+    delay: 10
+    timeout: 60
