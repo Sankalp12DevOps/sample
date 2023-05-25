@@ -41,6 +41,11 @@
    dest: /etc/nginx/default.d/roboshop.conf
   notify: restart nginx
 
+- name: move nginx.conf conf to nginx folder under /etc/nginx
+  ansible.builtin.copy:
+   src:  nginx.conf
+   dest: /etc/nginx/nginx.conf
+
 - name: start nginx
   ansible.builtin.service:
     name: nginx
