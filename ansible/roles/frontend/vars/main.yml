@@ -1,2 +1,2 @@
 USER: roboshop
-LOGPATH: "/var/log/nginx/nginx.conf"
+LOGPATH: "/var/log/nginx/access.log"
