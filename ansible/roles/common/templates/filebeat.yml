@@ -6,7 +6,7 @@ filebeat.inputs:
 {% endif %}
 
   paths:
-    - "{{LOGPATH}}"
+    - {{LOGPATH}}
   fields: 
     component: "{{COMPONENT}}"
     logtype: json
