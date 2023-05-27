@@ -1,1 +1,2 @@
 USER: roboshop
+LOGPATH: "/var/log/{{COMPONENT}}.log"

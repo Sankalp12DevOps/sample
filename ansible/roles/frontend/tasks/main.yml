@@ -54,3 +54,8 @@
     name: nginx
     state: started
     enabled: yes
+    
+- name: filebeat for {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: filebeat

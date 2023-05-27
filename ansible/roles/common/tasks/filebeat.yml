@@ -16,7 +16,7 @@
     src: filebeat.yml
     dest: /etc/filebeat/filebeat.yml
 
-- name: Enable service httpd, and not touch the state
+- name: Enable service filebeat, and not touch the state
   ansible.builtin.service:
     name: filebeat
     enabled: yes
