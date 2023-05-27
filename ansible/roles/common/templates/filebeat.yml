@@ -1,7 +1,7 @@
 filebeat.inputs:
 - type: log
   enabled: true
-{% if LOGTYPE == "json" %}  
+{% if "{{LOGTYPE}}" == "json" %}  
   json.keys_under_root: true
 {% endif %}
 

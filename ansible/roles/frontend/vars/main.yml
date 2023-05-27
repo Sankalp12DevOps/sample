@@ -1,2 +1,3 @@
 USER: roboshop
 LOGPATH: /var/log/nginx/access.log
+LOGTYPE: message
