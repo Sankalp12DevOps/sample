@@ -42,7 +42,7 @@
   notify: restart nginx
 
 - name: move nginx.conf conf to nginx folder under /etc/nginx
-  ansible.builtin.copy:
+  ansible.builtin.template:
    src:  nginx.conf
    dest: /etc/nginx/nginx.conf
 
